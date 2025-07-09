@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="product-card">
-          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <img src="uploads/8X8h.gif" alt="Ürün 2" class="product-image">
           <div class="product-details">
             <p class="product-title">Kablosuz Mouse</p>
             <div class="product-info">
