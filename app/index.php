@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>AmazonMini</title>
-  <link rel="stylesheet" href="assetss/style.css">
+  <link rel="stylesheet" href="assetssss/style.css">
 </head>
 
 <body>
@@ -57,6 +57,149 @@
             </div>
           </div>
         </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
+          <div class="product-details">
+            <p class="product-title">Kablosuz Mouse</p>
+            <div class="product-info">
+              <span class="product-price">₺179</span>
+              <div class="product-buttons">
+                <button class="add-cart">Sepete Ekle</button>
+                <button class="buy-now">Hemen Al</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -64,5 +207,5 @@
   <!-- Kapatılmışken görünen küçük açma butonu -->
   <button id="openBtn" class="open-button" onclick="openSidebar()" style="display:none;">≡</button>
 
-  <script src="assetss/script.js"></script>
+  <script src="assetssss/script.js"></script>
 </body>

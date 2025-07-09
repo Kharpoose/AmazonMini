@@ -5,7 +5,8 @@ body {
 
 .container {
   display: flex;
-  height: 100vh;
+  height: auto; /* Değiştirildi: 100vh yerine auto */
+  min-height: 100vh; /* Sayfa kısa ise yine tam ekran olsun */
 }
 
 .sidebar {
@@ -15,6 +16,13 @@ body {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: width 0.4s ease;
   overflow: hidden;
+  min-height: 100vh; /* Eklendi: Her zaman en az ekran kadar uzun */
+  height: 100%;      /* Eklendi: İçerik uzarsa daha da uzun olur */
+  position: fixed;   /* Eklendi: Sayfa kayınca da sabit kalsın */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
 }
 
 .sidebar.closed {
@@ -55,6 +63,12 @@ body {
 .content {
   flex: 1;
   padding: 30px;
+  margin-left: 200px; /* Eklendi: Sidebar genişliği kadar boşluk bırak */
+}
+
+.container .sidebar.closed + .content {
+  margin-left: 0 !important;
+  transition: margin-left 0.4s;
 }
 
 .topbar {
@@ -66,7 +80,7 @@ body {
 
 .search-form {
   display: flex;
-  max-width: 500px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -80,7 +94,7 @@ body {
 
 .search-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #3e8e41;
   color: white;
   border: none;
   border-left: 1px solid #3e8e41;
@@ -341,6 +355,11 @@ body.dark-mode .buy-now:hover {
 }
 
 body.dark-mode .product-image {
-  background: #181818;
   border-bottom: 1px solid #333;
+  background: #181818;
+}
+
+.sidebar.closed ~ .content {
+  margin-left: 0 !important;
+  transition: margin-left 0.4s;
 }
