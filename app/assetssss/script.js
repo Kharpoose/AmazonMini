@@ -43,3 +43,39 @@ window.addEventListener("scroll", function () {
 
   lastScrollTop = st <= 0 ? 0 : st;
 }, false);
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Açıklamaları kontrol et: uzun/kısa
+  const descriptions = document.querySelectorAll(".product-description");
+
+  descriptions.forEach(desc => {
+    const btn = desc.nextElementSibling;
+
+    // Açıklamanın tam yüksekliğini ölçmek için geçici olarak aç
+    desc.classList.add("expanded");
+    const fullHeight = desc.scrollHeight;
+    desc.classList.remove("expanded");
+
+    // Eğer zaten kısa ise butonu gizle
+    if (fullHeight <= 60) {
+      btn.style.display = "none";
+    }
+  });
+
+  // 2. Butonlara tıklanınca açıklamayı aç/kapat
+  const toggleButtons = document.querySelectorAll('.toggle-desc-btn');
+
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const desc = this.previousElementSibling;
+
+      desc.classList.toggle('expanded');
+
+      if (desc.classList.contains('expanded')) {
+        this.textContent = "Daha Az Göster";
+      } else {
+        this.textContent = "Daha Fazla Göster";
+      }
+    });
+  });
+});

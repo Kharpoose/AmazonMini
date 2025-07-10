@@ -77,15 +77,22 @@ body {
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
-
+.topbar-flex {
+  display: flex;
+  justify-content: flex-start; /* veya space-between */
+  align-items: center;
+  gap: 20px;
+}
 .search-form {
   display: flex;
-  max-width: 1000px;
+  width: 100%;
+  max-width: 700px; /* Daha fazla genişlik için artırıldı */
   margin: 0 auto;
 }
 
 .search-input {
   flex: 1;
+  min-width: 300px; /* Minimum genişlik eklendi */
   padding: 10px;
   border: 1px solid #aaa;
   border-radius: 6px 0 0 6px;
@@ -231,11 +238,10 @@ input:checked+.slider:before {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start;
 }
 
 .product-card {
-  width: 220px;
+  width: 250px;
   border: 1px solid #ccc;
   border-radius: 12px;
   overflow: hidden;
@@ -362,4 +368,32 @@ body.dark-mode .product-image {
 .sidebar.closed ~ .content {
   margin-left: 0 !important;
   transition: margin-left 0.4s;
+}
+.product-description {
+  font-size: 14px;
+  line-height: 1.4;
+  max-height: 3.6em; /* yaklaşık 2 satır */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.4s ease;
+}
+
+.product-description.expanded {
+  max-height: 500px; /* daha fazlası gerekiyorsa artır */
+}
+
+.toggle-desc-btn {
+  margin-top: 8px;
+  background-color: transparent;
+  border: none;
+  color: #0077cc;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.toggle-desc-btn:hover {
+  color: #005999;
 }

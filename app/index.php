@@ -17,8 +17,8 @@
     </aside>
     <main class="content">
       <div class="topbar">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-          <form class="search-form">
+        <div class="topbar-flex">
+          <form class="search-form" action="#" method="get">
             <input type="text" placeholder="Ürün ara..." class="search-input">
             <button type="submit" class="search-button">Ara</button>
           </form>
@@ -31,39 +31,45 @@
         </div>
       </div>
       <div class="product-list">
-        <div class="product-card">
-          <img src="uploads/8X8h.gif" alt="Ürün 1" class="product-image">
-          <div class="product-details">
-            <p class="product-title">Bluetooth Kulaklık</p>
-            <div class="product-info">
-              <span class="product-price">₺249</span>
-              <div class="product-buttons">
-                <button class="add-cart">Sepete Ekle</button>
-                <button class="buy-now">Hemen Al</button>
+        <?php
+        require_once "includes/db.php";
+
+        try {
+          $stmt = $pdo->query("SELECT * FROM products_amazon ORDER BY created_at DESC");
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+            <div class="product-card">
+              <img src="uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="product-image">
+              <div class="product-details">
+                <p class="product-title"><?= htmlspecialchars($row['name']) ?></p>
+
+                <div class="product-description short">
+                  <?= nl2br(htmlspecialchars($row['description'])) ?>
+                </div>
+
+                <button class="toggle-desc-btn">Daha Fazla Göster</button>
+
+                <div class="product-info">
+                  <span class="product-price">₺<?= htmlspecialchars($row['price']) ?></span>
+                  <div class="product-buttons">
+                    <button class="add-cart">Sepete Ekle</button>
+                    <button class="buy-now">Hemen Al</button>
+                  </div>
+                </div>
               </div>
+
             </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <img src="uploads/test1.jpg" alt="Ürün 2" class="product-image">
-          <div class="product-details">
-            <p class="product-title">Kablosuz Mouse</p>
-            <div class="product-info">
-              <span class="product-price">₺179</span>
-              <div class="product-buttons">
-                <button class="add-cart">Sepete Ekle</button>
-                <button class="buy-now">Hemen Al</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
+        <?php
+          }
+        } catch (PDOException $e) {
+          echo "<p style='color: red;'>Veritabanından ürünler alınamadı: " . $e->getMessage() . "</p>";
+        }
+        ?>
+      </div>
     </main>
-  </div> 
-
-  <button id="openBtn" class="open-button" onclick="openSidebar()" style="display:none;">≡</button>
-
-  <script src="assetsss/script.js"></script>
+  </div>
+  <button id="openBtn" class="open-button" onclick="openSidebar()">≡</button>
+  <script src="assetssss/script.js"></script>
 </body>
 
 </html>
