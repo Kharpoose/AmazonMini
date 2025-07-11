@@ -33,7 +33,6 @@
       <div class="product-list">
         <?php
         require_once "includes/db.php";
-
         try {
           $stmt = $pdo->query("SELECT * FROM products_amazon ORDER BY created_at DESC");
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -42,17 +41,13 @@
               <img src="uploads/<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>" class="product-image">
               <div class="product-details">
                 <p class="product-title"><?= htmlspecialchars($row['name']) ?></p>
-
                 <div class="product-description short">
                   <?= nl2br(htmlspecialchars($row['description'])) ?>
                 </div>
-
                 <button class="toggle-desc-btn">Daha Fazla Göster</button>
-
                 <?php if ($row['stock'] <= 10): ?>
                   <p class="stock-warning">Stokta sadece <?= htmlspecialchars($row['stock']) ?> adet kaldı!</p>
                 <?php endif; ?>
-
                 <div class="product-info">
                   <span class="product-price">₺<?= htmlspecialchars($row['price']) ?></span>
                   <div class="product-buttons">
@@ -62,7 +57,6 @@
                 </div>
               </div>
             </div>
-
         <?php
           }
         } catch (PDOException $e) {
