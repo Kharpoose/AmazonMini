@@ -49,6 +49,10 @@
 
                 <button class="toggle-desc-btn">Daha Fazla Göster</button>
 
+                <?php if ($row['stock'] <= 10): ?>
+                  <p class="stock-warning">Stokta sadece <?= htmlspecialchars($row['stock']) ?> adet kaldı!</p>
+                <?php endif; ?>
+
                 <div class="product-info">
                   <span class="product-price">₺<?= htmlspecialchars($row['price']) ?></span>
                   <div class="product-buttons">
@@ -57,8 +61,8 @@
                   </div>
                 </div>
               </div>
-
             </div>
+
         <?php
           }
         } catch (PDOException $e) {
