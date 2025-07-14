@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  height: auto;
+  /* Değiştirildi: 100vh yerine auto */
+  min-height: 100vh;
+  /* Sayfa kısa ise yine tam ekran olsun */
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #3b1515;
+  padding: 20px 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.4s ease;
+  overflow: hidden;
+  min-height: 100vh;
+  /* Eklendi: Her zaman en az ekran kadar uzun */
+  height: 100%;
+  /* Eklendi: İçerik uzarsa daha da uzun olur */
+  position: fixed;
+  /* Eklendi: Sayfa kayınca da sabit kalsın */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.sidebar.closed {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container .sidebar.closed+.content {
+  margin-left: 0 !important;
+  transition: margin-left 0.4s;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 200px;
+  /* Eklendi: Sidebar genişliği kadar boşluk bırak */
+}

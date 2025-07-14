@@ -1,0 +1,28 @@
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+    text-shadow: 0 0 3px #ff0000;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    text-shadow: 0 0 8px #ff3333;
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+    text-shadow: 0 0 3px #ff0000;
+  }
+}
+
+.stock-warning {
+  font-size: 12px;
+  font-weight: bold;
+  color: #ff3c3c;
+  margin-bottom: 5px;
+  animation: pulseGlow 1.5s infinite;
+  text-align: left;
+}

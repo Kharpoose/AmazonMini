@@ -1,0 +1,30 @@
+.product-description {
+  font-size: 14px;
+  line-height: 1.4;
+  max-height: 3.6em;
+  /* yaklaşık 2 satır */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.4s ease;
+}
+
+.product-description.expanded {
+  max-height: 500px;
+  /* daha fazlası gerekiyorsa artır */
+}
+
+.toggle-desc-btn {
+  margin-top: 8px;
+  background-color: transparent;
+  border: none;
+  color: #0077cc;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.toggle-desc-btn:hover {
+  color: #005999;
+}

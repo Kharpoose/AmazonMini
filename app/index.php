@@ -10,7 +10,8 @@ require_once "includes/db.php";
 <head>
   <meta charset="UTF-8">
   <title>AmazonMini</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 
 <body>

@@ -1,0 +1,87 @@
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .sidebar {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .menu-button,
+body.dark-mode .toggle-button {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .menu-button:hover,
+body.dark-mode .toggle-button:hover {
+  background-color: #444;
+}
+
+body.dark-mode .topbar {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .search-input {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+body.dark-mode .search-button,
+body.dark-mode .open-button {
+  background-color: #666;
+  border-left: 1px solid #444;
+}
+
+body.dark-mode .search-button:hover,
+body.dark-mode .open-button:hover {
+  background-color: #777;
+}
+
+body.dark-mode .product-card {
+  background-color: #232323;
+  border-color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .product-title {
+  color: #e0e0e0;
+}
+
+body.dark-mode .product-price {
+  color: #ffd700;
+}
+
+body.dark-mode .product-details {
+  background: none;
+}
+
+body.dark-mode .product-buttons button {
+  color: #fff;
+  background-color: #444;
+}
+
+body.dark-mode .add-cart {
+  background-color: #bfa93a;
+  color: #232323;
+}
+
+body.dark-mode .add-cart:hover {
+  background-color: #a68c1d;
+  color: #fff;
+}
+
+body.dark-mode .buy-now {
+  background-color: #d47d00;
+  color: #fff;
+}
+
+body.dark-mode .buy-now:hover {
+  background-color: #a65c00;
+}
+
+body.dark-mode .product-image {
+  border-bottom: 1px solid #333;
+  background: #181818;
+}

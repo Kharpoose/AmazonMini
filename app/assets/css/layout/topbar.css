@@ -1,0 +1,47 @@
+.topbar {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.topbar-flex {
+  display: flex;
+  justify-content: flex-start;
+  /* veya space-between */
+  align-items: center;
+  gap: 20px;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+  max-width: 700px;
+  /* Daha fazla genişlik için artırıldı */
+  margin: 0 auto;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 300px;
+  /* Minimum genişlik eklendi */
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px 0 0 6px;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #3e8e41;
+  color: white;
+  border: none;
+  border-left: 1px solid #3e8e41;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}

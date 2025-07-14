@@ -1,0 +1,116 @@
+.menu-button,
+.toggle-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #e0e0e0;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s, opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-button:hover,
+.toggle-button:hover {
+  background-color: #d5d5d5;
+}
+
+.sidebar.closed .menu-button,
+.sidebar.closed .toggle-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-button {
+  margin-bottom: 15px;
+}
+
+.open-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+}
+
+.open-button:hover {
+  background-color: #45a049;
+}
+
+.add-cart {
+  background-color: #f0c14b;
+  color: #111;
+}
+
+.buy-now {
+  background-color: #ff9900;
+  color: #fff;
+}
+
+.add-cart:hover {
+  background-color: #e2b33c;
+}
+
+.buy-now:hover {
+  background-color: #e68a00;
+}
+
+.toggle-desc-btn {
+  margin-top: 8px;
+  background-color: transparent;
+  border: none;
+  color: #0077cc;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.toggle-desc-btn:hover {
+  color: #005999;
+}
+
+.remove-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background-color: #f44336;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.remove-btn:hover {
+  background-color: #c62828;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1976d2;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #125aa3;
+}
