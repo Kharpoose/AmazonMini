@@ -1,0 +1,31 @@
+.sidebar {
+  width: 200px;
+  /* ... diğer sidebar stilleri ... */
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: width 0.4s ease;
+  overflow: hidden;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.sidebar.closed {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 200px; /* Sidebar genişliği kadar boşluk */
+  transition: margin-left 0.4s;
+}
+
+/* Sidebar kapandığında content'in margin-left sıfırlanır */
+.sidebar.closed ~ .content {
+  margin-left: 0 !important;
+}

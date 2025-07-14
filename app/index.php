@@ -30,7 +30,6 @@ require_once "includes/db.php";
             <input type="text" placeholder="Ürün ara..." class="search-input" id="searchInput">
             <button type="submit" class="search-button">Ara</button>
           </form>
-
           <div class="theme-switch">
             <label class="switch">
               <input type="checkbox" id="themeToggle">
