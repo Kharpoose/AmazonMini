@@ -79,3 +79,49 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  const productList = document.querySelector('.product-list');
+
+  // Arama formunun submit'ini engelle (sayfa yenilenmesin)
+  document.getElementById('searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+  });
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+
+    const products = Array.from(productList.querySelectorAll('.product-card'));
+
+
+    // Filtre ve sırala
+    const filtered = products.filter(card => {
+      const title = card.querySelector('.product-title').textContent.toLowerCase();
+      return title.includes(query);
+    });
+
+    // Sırala: Başlangıcı eşleşenler önce gelsin
+    filtered.sort((a, b) => {
+      const aTitle = a.querySelector('.product-title').textContent.toLowerCase();
+      const bTitle = b.querySelector('.product-title').textContent.toLowerCase();
+
+      const aStarts = aTitle.startsWith(query) ? 0 : 1;
+      const bStarts = bTitle.startsWith(query) ? 0 : 1;
+
+      if (aStarts !== bStarts) return aStarts - bStarts;
+      // Başlangıcı eşit olanlarda alfabetik sırala
+      return aTitle.localeCompare(bTitle);
+    });
+
+    // Önce tüm ürünleri gizle
+    products.forEach(card => card.style.display = 'none');
+
+    // Sonra filtrelenip sıralananları göster ve sırala
+    filtered.forEach(card => {
+      card.style.display = 'block';
+      productList.appendChild(card); // DOM'da sıralamayı güncelle
+    });
+  });
+});
+

@@ -1,5 +1,5 @@
 <?php
-$host = 'training2025-db-instance-1.c25mkwu8gg8k.us-east-1.rds.amazonaws.com';   
+$host = 'training2025-db-instance-1-us-east-1a.c25mkwu8gg8k.us-east-1.rds.amazonaws.com';   
 $db   = 'salesdb';
 $user = 'karpuz';     
 $pass = 'training2025-karpuz';     
