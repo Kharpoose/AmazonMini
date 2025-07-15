@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['kullanici_id'])) {
+    header("Location: ../login/login.php");
+    exit;
+}
+
 require_once "../includes/db.php";
 
 $id = (int) ($_GET['id'] ?? 0);

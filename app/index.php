@@ -1,5 +1,13 @@
 <?php
 session_start();
+if (!isset($_SESSION['kullanici_id'])) {
+  header("Location: login/login.php");
+  exit;
+}
+?>
+
+
+<?php
 require_once "includes/db.php";
 ?>
 
@@ -22,6 +30,7 @@ require_once "includes/db.php";
       <!-- Sepet butonunun yolunu güncelle -->
       <button class="menu-button" onclick="window.location.href='card/sepet.php'">🛒 Sepet</button>
       <button class="menu-button">⚙️ Ayarlar</button>
+      <button class="menu-button" onclick="window.location.href='login/logout.php'"> Çıkış Yap</button>
     </aside>
     <main class="content">
       <div class="topbar">

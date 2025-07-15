@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION['kullanici_id'])) {
+  header("Location: login/login.php");
+  exit;
+}
+?>
+<?php
 require_once "includes/db.php";
 
 if (!isset($_POST['product_id'])) {

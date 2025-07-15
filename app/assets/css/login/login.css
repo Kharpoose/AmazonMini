@@ -1,0 +1,152 @@
+body {
+  background: #f6f7fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+body.dark-mode .auth-container {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: 0 2px 12px rgba(255, 255, 255, 0.05);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 60px;
+  color: #333;
+  font-weight: 600;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-container label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+label {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.auth-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: #4f46e5;
+  outline: none;
+}
+
+body.dark-mode .auth-container input {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+.auth-container button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.auth-container button:hover {
+  background-color: #125aa3;
+}
+
+button[type="submit"]:hover {
+  background: #3730a3;
+}
+
+.auth-container p {
+  margin-top: 15px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.auth-container a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
