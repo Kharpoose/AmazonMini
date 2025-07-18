@@ -8,7 +8,7 @@ $cart = $_SESSION['cart'] ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="tr">
-// This file displays the user's shopping cart
+<!-- Bu dosya kullanıcının alışveriş sepetini gösterir -->
 
 <head>
     <meta charset="UTF-8">
