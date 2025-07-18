@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['kullanici_id'])) {
-  header("Location: ../login/login.php");
-  exit;
+    header("Location: ../login/login.php");
+    exit;
 }
 $cart = $_SESSION['cart'] ?? [];
 ?>
@@ -24,6 +24,10 @@ $cart = $_SESSION['cart'] ?? [];
     <div style="text-align: right; margin-bottom: 15px;">
         <a href="clear_cart.php" class="remove-btn">🗑 Sepeti Temizle</a>
     </div>
+    <form method="post" action="purchase.php">
+        <button type="submit">Satın Al</button>
+    </form>
+
 
     <div class="product-list" style="padding: 20px;">
         <?php if (empty($cart)): ?>
