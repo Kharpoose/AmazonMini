@@ -1,5 +1,27 @@
 <?php
 session_start();
+
+// Oturum zaman aşımı: 30 dakika
+$timeout = 30 * 60;
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout) {
+    // Sepeti geri yükle
+    if (isset($_SESSION['cart'])) {
+        require_once '../includes/db.php';
+        foreach ($_SESSION['cart'] as $productId => $item) {
+            $quantity = $item['quantity'];
+            $stmt = $pdo->prepare("UPDATE products_amazon SET stock = stock + ? WHERE id = ?");
+            $stmt->execute([$quantity, $productId]);
+        }
+    }
+
+    session_unset();
+    session_destroy();
+    header("Location: ../login/login.php?timeout=1");
+    exit;
+}
+$_SESSION['LAST_ACTIVITY'] = time(); // her işlemde güncellenir
+
 if (!isset($_SESSION['kullanici_id'])) {
     header("Location: ../login/login.php");
     exit;
