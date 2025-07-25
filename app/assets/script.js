@@ -2,18 +2,18 @@ const sidebar = document.getElementById("sidebar");
 const openBtn = document.getElementById("openBtn");
 const closeBtn = document.getElementById("closeBtn");
 
-let sidebarLocked = false; // Kullanıcı butonla açtı/kapattıysa true olur
+let sidebarLocked = false; // ユーザーがボタンで開閉した場合は true
 
 function closeSidebar() {
   sidebar.classList.add("closed");
   openBtn.style.display = "block";
-  sidebarLocked = true; // Kullanıcı kapattı, scroll ile değişmesin
+  sidebarLocked = true; // ユーザーが閉じたのでスクロールで変更しない
 }
 
 function openSidebar() {
   sidebar.classList.remove("closed");
   openBtn.style.display = "none";
-  sidebarLocked = true; // Kullanıcı açtı, scroll ile değişmesin
+  sidebarLocked = true; // ユーザーが開いたのでスクロールで変更しない
 }
 
 document.getElementById("themeToggle").addEventListener("change", function() {
@@ -23,11 +23,11 @@ document.getElementById("themeToggle").addEventListener("change", function() {
 let lastScrollTop = 0;
 
 window.addEventListener("scroll", function () {
-  if (sidebarLocked) return; // Kullanıcı butonla açtı/kapattıysa scroll ile değişmesin
+  if (sidebarLocked) return; // ユーザーがボタンで開閉した場合はスクロールで変更しない
 
   let st = window.pageYOffset || document.documentElement.scrollTop;
 
-  // Sadece aşağı kaydırınca kapat
+  // 下にスクロールした時だけ閉じる
   if (st > lastScrollTop) {
     if (!sidebar.classList.contains("closed")) {
       sidebar.classList.add("closed");
@@ -35,7 +35,7 @@ window.addEventListener("scroll", function () {
     }
   }
 
-  // Sadece en tepeye çıkınca aç
+  // 一番上に戻った時だけ開く
   if (st === 0 && sidebar.classList.contains("closed")) {
     sidebar.classList.remove("closed");
     openBtn.style.display = "none";
@@ -45,24 +45,24 @@ window.addEventListener("scroll", function () {
 }, false);
 
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Açıklamaları kontrol et: uzun/kısa
+  // 1. 説明文の長さをチェック
   const descriptions = document.querySelectorAll(".product-description");
 
   descriptions.forEach(desc => {
     const btn = desc.nextElementSibling;
 
-    // Açıklamanın tam yüksekliğini ölçmek için geçici olarak aç
+    // 説明文の高さを一時的に展開して測定
     desc.classList.add("expanded");
     const fullHeight = desc.scrollHeight;
     desc.classList.remove("expanded");
 
-    // Eğer zaten kısa ise butonu gizle
+    // すでに短い場合はボタンを非表示
     if (fullHeight <= 60) {
       btn.style.display = "none";
     }
   });
 
-  // 2. Butonlara tıklanınca açıklamayı aç/kapat
+  // 2. ボタンをクリックしたら説明文を開閉
   const toggleButtons = document.querySelectorAll('.toggle-desc-btn');
 
   toggleButtons.forEach(button => {
@@ -72,9 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
       desc.classList.toggle('expanded');
 
       if (desc.classList.contains('expanded')) {
-        this.textContent = "Daha Az Göster";
+        this.textContent = "少なく表示";
       } else {
-        this.textContent = "Daha Fazla Göster";
+        this.textContent = "もっと見る";
       }
     });
   });
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('searchInput');
   const productList = document.querySelector('.product-list');
 
-  // Arama formunun submit'ini engelle (sayfa yenilenmesin)
+  // 検索フォームの送信を防ぐ（ページをリロードしない）
   document.getElementById('searchForm').addEventListener('submit', e => {
     e.preventDefault();
   });
@@ -95,13 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = Array.from(productList.querySelectorAll('.product-card'));
 
 
-    // Filtre ve sırala
+    // フィルターと並び替え
     const filtered = products.filter(card => {
       const title = card.querySelector('.product-title').textContent.toLowerCase();
       return title.includes(query);
     });
 
-    // Sırala: Başlangıcı eşleşenler önce gelsin
+    // 並び替え：先頭一致を優先
     filtered.sort((a, b) => {
       const aTitle = a.querySelector('.product-title').textContent.toLowerCase();
       const bTitle = b.querySelector('.product-title').textContent.toLowerCase();
@@ -110,18 +110,44 @@ document.addEventListener('DOMContentLoaded', () => {
       const bStarts = bTitle.startsWith(query) ? 0 : 1;
 
       if (aStarts !== bStarts) return aStarts - bStarts;
-      // Başlangıcı eşit olanlarda alfabetik sırala
+      // 先頭一致が同じ場合はアルファベット順
       return aTitle.localeCompare(bTitle);
     });
 
-    // Önce tüm ürünleri gizle
+    // 全ての商品を非表示
     products.forEach(card => card.style.display = 'none');
 
-    // Sonra filtrelenip sıralananları göster ve sırala
+    // フィルター＆並び替えた商品を表示＆順序更新
     filtered.forEach(card => {
       card.style.display = 'block';
       productList.appendChild(card); // DOM'da sıralamayı güncelle
     });
   });
+});
+
+// ページ読み込み時に localStorage からテーマ情報を適用
+document.addEventListener('DOMContentLoaded', function () {
+    const themeToggle = document.getElementById('themeToggle');
+    const isDark = localStorage.getItem('theme') === 'dark';
+
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.checked = true;
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (themeToggle) themeToggle.checked = false;
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('change', function () {
+            if (this.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
 });
 

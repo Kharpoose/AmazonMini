@@ -2,7 +2,7 @@
 session_start();
 require_once '../includes/db.php';
 
-// Oturum kontrolü
+// セッション確認
 if (!isset($_SESSION['kullanici_id'])) {
     header("Location: ../login/login.php");
     exit;
@@ -10,23 +10,23 @@ if (!isset($_SESSION['kullanici_id'])) {
 
 $username = $_SESSION['user']['username'];
 
-// Kullanıcı id'sini al
+// ユーザーID取得
 $stmt = $pdo->prepare("SELECT id FROM amazon_login WHERE username = ?");
 $stmt->execute([$username]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    echo "Kullanıcı bulunamadı.";
+    echo "ユーザーが見つかりません。";
     exit;
 }
 
 $userId = $user['id'];
 
-// Sepeti session'dan al
+// カート情報取得
 $cartItems = $_SESSION['cart'] ?? [];
 
 if (empty($cartItems)) {
-    echo "<h2>Sepetiniz boş.</h2>";
+    echo "<h2>カートは空です。</h2>";
     exit;
 }
 
@@ -36,33 +36,33 @@ try {
     foreach ($cartItems as $productId => $item) {
         $quantity = $item['quantity'];
 
-        // Ürün adı products_amazon tablosundan alınsın (güvenli olsun diye)
+        // 商品名取得（安全のためDBから）
         $stmtProduct = $pdo->prepare("SELECT name FROM products_amazon WHERE id = ?");
         $stmtProduct->execute([$productId]);
         $product = $stmtProduct->fetch();
 
         if (!$product) {
-            throw new Exception("Ürün bulunamadı (ID: $productId)");
+            throw new Exception("商品が見つかりません (ID: $productId)");
         }
 
         $productName = $product['name'];
 
-        // Siparişi orders_amazon tablosuna kaydet
+        // 注文情報をorders_amazonテーブルに保存
         $stmtInsert = $pdo->prepare("INSERT INTO orders_amazon (user_id, product_name, quantity) VALUES (?, ?, ?)");
         $stmtInsert->execute([$userId, $productName, $quantity]);
     }
 
-    // Sepeti temizle
+    // カートをクリア
     unset($_SESSION['cart']);
 
     $pdo->commit();
 
-    echo "<h2>✅ Sipariş başarıyla tamamlandı!</h2>";
-    echo "<a href='../index.php'>Ana sayfaya dön</a>";
+    echo "<h2>✅ ご注文が正常に完了しました！</h2>";
+    echo "<a href='../index.php'>ホームに戻る</a>";
 
 } catch (Exception $e) {
     $pdo->rollBack();
-    echo "<h2>❌ Hata oluştu: " . htmlspecialchars($e->getMessage()) . "</h2>";
-    echo "<a href='sepet.php'>Sepete dön</a>";
+    echo "<h2>❌ エラーが発生しました: " . htmlspecialchars($e->getMessage()) . "</h2>";
+    echo "<a href='sepet.php'>カートに戻る</a>";
 }
 ?>

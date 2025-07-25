@@ -4,31 +4,31 @@ if (!isset($_SESSION['kullanici_id'])) {
   header("Location: login/login.php");
   exit;
 }
-?>
-<?php
+
 require_once "includes/db.php";
 
+// 商品IDが指定されていない場合はエラー
 if (!isset($_POST['product_id'])) {
-    die("Ürün ID'si eksik.");
+    die("商品IDが不足しています。");
 }
 
 $id = (int) $_POST['product_id'];
 
-// 1. Ürünü veritabanından al
+// 1. 商品情報を取得
 $stmt = $pdo->prepare("SELECT * FROM products_amazon WHERE id = ?");
 $stmt->execute([$id]);
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$product) {
-    die("Ürün bulunamadı.");
+    die("商品が見つかりません。");
 }
 
-// 2. Stok kontrolü
+// 2. 在庫チェック
 if ($product['stock'] <= 0) {
-    die("Stok kalmadı.");
+    die("在庫がありません。");
 }
 
-// 3. Sepete ekle (session)
+// 3. カートに追加（セッション）
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
@@ -44,7 +44,7 @@ if (isset($_SESSION['cart'][$id])) {
     ];
 }
 
-// 4. Stok -1 güncelle
+// 4. 在庫を1減らす
 $update = $pdo->prepare("UPDATE products_amazon SET stock = stock - 1 WHERE id = ?");
 $update->execute([$id]);
 

@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Oturum zaman aşımı: 30 dakika
+// セッションタイムアウト: 30分
 $timeout = 30 * 60;
 
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout) {
-    // Sepeti geri yükle
+    // カートを元に戻す
     if (isset($_SESSION['cart'])) {
         require_once '../includes/db.php';
         foreach ($_SESSION['cart'] as $productId => $item) {
@@ -20,7 +20,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
     header("Location: ../login/login.php?timeout=1");
     exit;
 }
-$_SESSION['LAST_ACTIVITY'] = time(); // her işlemde güncellenir
+$_SESSION['LAST_ACTIVITY'] = time(); // 各操作で更新
 
 if (!isset($_SESSION['kullanici_id'])) {
     header("Location: ../login/login.php");
@@ -29,38 +29,37 @@ if (!isset($_SESSION['kullanici_id'])) {
 $cart = $_SESSION['cart'] ?? [];
 ?>
 <!DOCTYPE html>
-<html lang="tr">
-<!-- Bu dosya kullanıcının alışveriş sepetini gösterir -->
+<html lang="ja">
+<!-- このファイルはユーザーのショッピングカートを表示します -->
 
 <head>
     <meta charset="UTF-8">
-    <title>Sepetim</title>
+    <title>カート</title>
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
-    <h1 style="text-align: center;">🛒 Sepetim</h1>
+    <h1 style="text-align: center;">🛒 カート</h1>
     <div style="text-align: center; margin-top: 20px;">
-        <a href="../index.php" class="back-button">← Anasayfaya Dön</a>
+        <a href="../index.php" class="back-button">← ホームに戻る</a>
     </div>
     <div style="text-align: right; margin-bottom: 15px;">
-        <a href="clear_cart.php" class="remove-btn">🗑 Sepeti Temizle</a>
+        <a href="clear_cart.php" class="remove-btn">🗑 カートを空にする</a>
     </div>
     <form method="post" action="purchase.php">
-        <button type="submit">Satın Al</button>
+        <button type="submit">購入する</button>
     </form>
-
 
     <div class="product-list" style="padding: 20px;">
         <?php if (empty($cart)): ?>
-            <p>Sepetiniz boş.</p>
+            <p>カートは空です。</p>
         <?php else: ?>
             <?php foreach ($cart as $id => $item): ?>
                 <div class="product-card">
                     <img src="../uploads/<?= htmlspecialchars($item['image']) ?>" class="product-image">
                     <div class="product-details">
                         <p class="product-title"><?= htmlspecialchars($item['name']) ?></p>
-                        <p class="product-price">₺<?= number_format($item['price'], 2) ?></p>
+                        <p class="product-price">￥<?= number_format($item['price'], 2) ?></p>
                         <div class="cart-controls">
                             <a href="update_cart.php?id=<?= $id ?>&action=decrease">—</a>
                             <span><?= $item['quantity'] ?></span>
@@ -68,7 +67,7 @@ $cart = $_SESSION['cart'] ?? [];
                             <a href="remove_from_cart.php?id=<?= $id ?>" class="remove-btn">🞪</a>
                         </div>
 
-                        <p>Miktar: <?= $item['quantity'] ?></p>
+                        <p>数量: <?= $item['quantity'] ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

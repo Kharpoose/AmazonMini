@@ -34,31 +34,30 @@ require_once "includes/db.php";
 
 
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <title>AmazonMini</title>
   <link rel="stylesheet" href="assets/css/main.css">
-
 </head>
 
 <body>
   <div class="container">
     <aside class="sidebar" id="sidebar">
-      <button class="toggle-button" id="closeBtn" onclick="closeSidebar()">≡ Menü</button>
-      <button class="menu-button">🗂 Kategori</button>
+      <button class="toggle-button" id="closeBtn" onclick="closeSidebar()">≡ メニュー</button>
+      <button class="menu-button">🗂 カテゴリー</button>
       <!-- Sepet butonunun yolunu güncelle -->
-      <button class="menu-button" onclick="window.location.href='card/sepet.php'">🛒 Sepet</button>
-      <button class="menu-button">⚙️ Ayarlar</button>
-      <button class="menu-button" onclick="window.location.href='login/logout.php'"> Çıkış Yap</button>
+      <button class="menu-button" onclick="window.location.href='card/sepet.php'">🛒 カート</button>
+      <button class="menu-button">⚙️ 設定</button>
+      <button class="menu-button" onclick="window.location.href='login/logout.php'"> ログアウト</button>
     </aside>
     <main class="content">
       <div class="topbar">
         <div class="topbar-flex">
           <form class="search-form" id="searchForm">
-            <input type="text" placeholder="Ürün ara..." class="search-input" id="searchInput">
-            <button type="submit" class="search-button">Ara</button>
+            <input type="text" placeholder="商品を検索..." class="search-input" id="searchInput">
+            <button type="submit" class="search-button">検索</button>
           </form>
           <div class="theme-switch">
             <label class="switch">
@@ -82,19 +81,19 @@ require_once "includes/db.php";
                 <div class="product-description short">
                   <?= nl2br(htmlspecialchars($row['description'])) ?>
                 </div>
-                <button class="toggle-desc-btn">Daha Fazla Göster</button>
+                <button class="toggle-desc-btn">もっと見る</button>
                 <?php if ($row['stock'] <= 10): ?>
-                  <p class="stock-warning">Stokta sadece <?= htmlspecialchars($row['stock']) ?> adet kaldı!</p>
+                  <p class="stock-warning">在庫は残り<?= htmlspecialchars($row['stock']) ?>個です！</p>
                 <?php endif; ?>
                 <div class="product-info">
-                  <span class="product-price">₺<?= htmlspecialchars($row['price']) ?></span>
+                  <span class="product-price">￥<?= htmlspecialchars($row['price']) ?></span>
                   <div class="product-buttons">
                     <!-- Sepete ekle formunun yolunu güncelle -->
                     <form action="add_to_cart.php" method="post" style="margin: 0;">
                       <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
-                      <button type="submit" class="add-cart">Sepete Ekle</button>
+                      <button type="submit" class="add-cart">カートに追加</button>
                     </form>
-                    <button class="buy-now">Hemen Al</button>
+                    <button class="buy-now">今すぐ購入</button>
                   </div>
                 </div>
               </div>
@@ -102,7 +101,7 @@ require_once "includes/db.php";
         <?php
           }
         } catch (PDOException $e) {
-          echo "<p style='color: red;'>Veritabanından ürünler alınamadı: " . $e->getMessage() . "</p>";
+          echo "<p style='color: red;'>データベースから商品を取得できませんでした: " . $e->getMessage() . "</p>";
         }
         ?>
       </div>

@@ -16,7 +16,7 @@ if (!isset($_SESSION['cart'][$id])) {
 }
 
 if ($action === 'increase') {
-    // Veritabanında stok varsa artır
+    // データベースの在庫があれば増やす
     $stmt = $pdo->prepare("SELECT stock FROM products_amazon WHERE id = ?");
     $stmt->execute([$id]);
     $stock = $stmt->fetchColumn();
@@ -31,7 +31,7 @@ if ($action === 'increase') {
         $_SESSION['cart'][$id]['quantity'] -= 1;
         $pdo->prepare("UPDATE products_amazon SET stock = stock + 1 WHERE id = ?")->execute([$id]);
     } else {
-        // 1'den azsa komple sil
+        // 1未満の場合は完全に削除
         header("Location: remove_from_cart.php?id=$id");
         exit;
     }
