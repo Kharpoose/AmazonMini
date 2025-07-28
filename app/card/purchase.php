@@ -27,6 +27,7 @@ $cartItems = $_SESSION['cart'] ?? [];
 
 if (empty($cartItems)) {
     echo "<h2>カートは空です。</h2>";
+    echo '<a href="../index.php" style="display:inline-block;margin-top:20px;padding:10px 20px;background:#222;color:#fff;border-radius:6px;text-decoration:none;">ホームに戻る</a>';
     exit;
 }
 
