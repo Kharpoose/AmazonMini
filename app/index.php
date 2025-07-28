@@ -3,9 +3,7 @@ session_start();
 
 // Oturum zaman aşımı: 30 dakika
 $timeout = 30 * 60;
-
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout) {
-    // Sepeti geri yükle
     if (isset($_SESSION['cart'])) {
         require_once 'includes/db.php';
         foreach ($_SESSION['cart'] as $productId => $item) {
@@ -19,35 +17,27 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
     header("Location: login/login.php?timeout=1");
     exit;
 }
-$_SESSION['LAST_ACTIVITY'] = time(); // her işlemde güncellenir
+$_SESSION['LAST_ACTIVITY'] = time();
 
 if (!isset($_SESSION['kullanici_id'])) {
-  header("Location: login/login.php");
-  exit;
+    header("Location: login/login.php");
+    exit;
 }
-?>
 
-
-<?php
 require_once "includes/db.php";
 ?>
-
-
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <title>AmazonMini</title>
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
-
 <body>
   <div class="container">
     <aside class="sidebar" id="sidebar">
       <button class="toggle-button" id="closeBtn" onclick="closeSidebar()">≡ メニュー</button>
       <button class="menu-button">🗂 カテゴリー</button>
-      <!-- Sepet butonunun yolunu güncelle -->
       <button class="menu-button" onclick="window.location.href='card/sepet.php'">🛒 カート</button>
       <button class="menu-button">⚙️ 設定</button>
       <button class="menu-button" onclick="window.location.href='login/logout.php'"> ログアウト</button>
@@ -69,7 +59,6 @@ require_once "includes/db.php";
       </div>
       <div class="product-list">
         <?php
-        require_once "includes/db.php";
         try {
           $stmt = $pdo->query("SELECT * FROM products_amazon ORDER BY created_at DESC");
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -88,7 +77,6 @@ require_once "includes/db.php";
                 <div class="product-info">
                   <span class="product-price">￥<?= htmlspecialchars($row['price']) ?></span>
                   <div class="product-buttons">
-                    <!-- Sepete ekle formunun yolunu güncelle -->
                     <form action="add_to_cart.php" method="post" style="margin: 0;">
                       <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
                       <button type="submit" class="add-cart">カートに追加</button>
@@ -101,14 +89,19 @@ require_once "includes/db.php";
         <?php
           }
         } catch (PDOException $e) {
-          echo "<p style='color: red;'>データベースから商品を取得できませんでした: " . $e->getMessage() . "</p>";
+          echo "<p class='error'>データベースから商品を取得できませんでした: " . $e->getMessage() . "</p>";
         }
         ?>
       </div>
     </main>
   </div>
+
+  <!-- Pop-up -->
+  <div id="cart-popup" class="cart-popup">
+    商品がカートに追加されました！
+  </div>
+
   <button id="openBtn" class="open-button" onclick="openSidebar()">≡</button>
   <script src="assets/script.js"></script>
 </body>
-
 </html>

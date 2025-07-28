@@ -1,0 +1,29 @@
+/* ...diğer stiller... */
+
+.cart-popup {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  background: #222;
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  font-size: 16px;
+  transition: opacity 0.3s;
+}
+
+.cart-popup.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Hata mesajı */
+.error {
+  color: red;
+  margin: 20px;
+}
+
+/* ...diğer stiller... */

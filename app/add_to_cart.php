@@ -49,5 +49,5 @@ $update = $pdo->prepare("UPDATE products_amazon SET stock = stock - 1 WHERE id =
 $update->execute([$id]);
 
 // 5. Ana sayfaya geri yönlendir
-header("Location: index.php");
+header("Location: index.php?added=1");
 exit;

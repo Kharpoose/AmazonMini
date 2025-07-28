@@ -151,3 +151,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Pop-up fonction
+function showCartPopup() {
+  const popup = document.getElementById('cart-popup');
+  popup.classList.add('show');
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, 1800);
+}
+
+// showpopup fonctıon
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('added') === '1') {
+    showCartPopup();
+    // URL'den parametreyi kaldır (kullanıcı tekrar yenilerse tekrar gösterilmesin)
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+});
+
