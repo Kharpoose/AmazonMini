@@ -38,7 +38,7 @@ require_once "includes/db.php";
     <aside class="sidebar" id="sidebar">
       <button class="toggle-button" id="closeBtn" onclick="closeSidebar()">≡ メニュー</button>
       <button class="menu-button">🗂 カテゴリー</button>
-      <button class="menu-button" onclick="window.location.href='card/sepet.php'">🛒 カート</button>
+      <button class="menu-button" onclick="window.location.href='cart/sepet.php'">🛒 カート</button>
       <button class="menu-button">⚙️ 設定</button>
       <button class="menu-button" onclick="window.location.href='login/logout.php'"> ログアウト</button>
     </aside>
