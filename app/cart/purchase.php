@@ -22,7 +22,7 @@ if (!$user) {
 
 $userId = $user['id'];
 
-// カート情報取得
+// カート情報取得 
 $cartItems = $_SESSION['cart'] ?? [];
 
 if (empty($cartItems)) {
@@ -58,12 +58,12 @@ try {
 
     $pdo->commit();
 
-    echo "<h2>✅ ご注文が正常に完了しました！</h2>";
+    echo "<h2> ご注文が正常に完了しました！</h2>";
     echo "<a href='../index.php'>ホームに戻る</a>";
 
 } catch (Exception $e) {
     $pdo->rollBack();
-    echo "<h2>❌ エラーが発生しました: " . htmlspecialchars($e->getMessage()) . "</h2>";
+    echo "<h2> エラーが発生しました: " . htmlspecialchars($e->getMessage()) . "</h2>";
     echo "<a href='sepet.php'>カートに戻る</a>";
 }
 ?>
